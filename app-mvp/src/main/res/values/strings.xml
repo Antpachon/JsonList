@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">JsonList-MVP</string>
+    <string name="error_fetching_list">Please check your internet connection</string>
+</resources>
