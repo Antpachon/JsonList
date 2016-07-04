@@ -9,7 +9,7 @@ import java.util.List;
 public class Data implements Serializable{
 
     @SerializedName("data")
-    List<Guide> guideList = new ArrayList<Guide>();
+    public List<Guide> guideList = new ArrayList<Guide>();
 
     public List<Guide> getGuideList() {
         return guideList;

@@ -19,12 +19,15 @@ public class JsonListApplication extends Application {
 
         sInstance = this;
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://guidebook.com/service/v2/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        if (apiService != null) {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("http://guidebook.com/service/v2/")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
 
-        apiService = retrofit.create(APIService.class);
+            apiService = retrofit.create(APIService.class);
+        }
+
     }
 
     public static JsonListApplication getApplicationInstance() {
@@ -33,5 +36,10 @@ public class JsonListApplication extends Application {
 
     public APIService getAPIService(){
         return apiService;
+    }
+
+    //For setting mocks during testing
+    public void setAPIService(APIService apiService) {
+        this.apiService = apiService;
     }
 }
