@@ -1,7 +1,7 @@
 
 Solution for a code challenge implemented in two different ways:
 - Standard Android architecture 
-- MVP(model view presenter) architecture.
+- MVP(model view presenter) architecture, including JUnit tests for the presenter using robolectric.
 
 # Code challenge
 Create an Android application that displays information received over the network.
