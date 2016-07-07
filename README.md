@@ -2,6 +2,7 @@
 Solution for a code challenge implemented in two different ways:
 - Standard Android architecture 
 - MVP(model view presenter) architecture, including JUnit tests for the presenter using robolectric.
+- MVP using Dagger 2 to inject dependencies. Tests mocking dagger injections included.
 
 # Code challenge
 Create an Android application that displays information received over the network.
