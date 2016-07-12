@@ -1,6 +1,6 @@
 package com.antonio.jsonlist_mvp.dagger;
 
-import com.antonio.jsonlist_mvp.presenter.SplashPresenter;
+import com.antonio.jsonlist_mvp.view.SplashActivity;
 
 import javax.inject.Singleton;
 
@@ -8,8 +8,8 @@ import dagger.Component;
 
 @Singleton
 @Component(modules = {ApplicationModule.class})
-public interface APIComponent {
+public interface SplashPresenterComponent {
 
-    void inject(SplashPresenter presenter);
+    void inject(SplashActivity activity);
 
 }

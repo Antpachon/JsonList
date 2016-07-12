@@ -10,17 +10,18 @@ import com.antonio.jsonlist_mvp.R;
 import com.antonio.jsonlist_mvp.model.Data;
 import com.antonio.jsonlist_mvp.presenter.SplashPresenter;
 
+import javax.inject.Inject;
+
 public class SplashActivity extends AppCompatActivity implements SplashView {
 
     public static String DATA_TAG = "data_tag";
-    private SplashPresenter presenter;
+    @Inject SplashPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        presenter = new SplashPresenter();
         presenter.attachView(this);
 
         presenter.loadNetworkData();

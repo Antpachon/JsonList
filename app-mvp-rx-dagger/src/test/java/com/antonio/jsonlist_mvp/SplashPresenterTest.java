@@ -1,5 +1,8 @@
 package com.antonio.jsonlist_mvp;
 
+import android.app.Application;
+
+import com.antonio.jsonlist_mvp.model.APIService;
 import com.antonio.jsonlist_mvp.model.Data;
 import com.antonio.jsonlist_mvp.presenter.SplashPresenter;
 import com.antonio.jsonlist_mvp.view.SplashView;
@@ -24,12 +27,13 @@ public class SplashPresenterTest {
 
     SplashPresenter presenter;
     SplashView view;
+    APIService apiServiceMock;
 
     @Before
     public void setUp() {
-        JsonListApplication application = (JsonListApplication) RuntimeEnvironment.application;
-
-        presenter = new SplashPresenter();
+        Application application = RuntimeEnvironment.application;
+        apiServiceMock = Mockito.mock(APIService.class);
+        presenter = new SplashPresenter(apiServiceMock);
         view = Mockito.mock(SplashView.class);
         Mockito.when(view.getContext()).thenReturn(application);
         presenter.attachView(view);
@@ -37,14 +41,14 @@ public class SplashPresenterTest {
 
     @Test
     public void loadDataSuccesfully() throws IOException {
-        Mockito.when(presenter.getApiService().listGuides()).thenReturn(MockData.okResponse());
+        Mockito.when(apiServiceMock.listGuides()).thenReturn(MockData.okResponse());
         presenter.loadNetworkData();
         Mockito.verify(view).moveToNextScreen(Mockito.any(Data.class));
     }
 
     @Test
     public void loadDataFail() throws  IOException{
-        Mockito.when(presenter.getApiService().listGuides()).thenReturn(MockData.errorResponse());
+        Mockito.when(apiServiceMock.listGuides()).thenReturn(MockData.errorResponse());
         presenter.loadNetworkData();
         Mockito.verify(view).displayErrorMessage();
     }

@@ -1,9 +1,6 @@
 package com.antonio.jsonlist_mvp.presenter;
 
 
-import android.app.Activity;
-
-import com.antonio.jsonlist_mvp.JsonListApplication;
 import com.antonio.jsonlist_mvp.model.APIService;
 import com.antonio.jsonlist_mvp.model.Data;
 import com.antonio.jsonlist_mvp.view.SplashView;
@@ -18,13 +15,16 @@ public class SplashPresenter implements Presenter<SplashView> {
 
     private SplashView splashView;
 
-    @Inject
     APIService apiService;
+
+    @Inject
+    public SplashPresenter(APIService apiService) {
+        this.apiService = apiService;
+    }
 
     @Override
     public void attachView(SplashView view) {
         this.splashView = view;
-        ((JsonListApplication)splashView.getContext()).getComponent().inject(this);
     }
 
     @Override
@@ -50,10 +50,5 @@ public class SplashPresenter implements Presenter<SplashView> {
         }
     });
 
-    }
-
-    //Testing purposes
-    public APIService getApiService() {
-        return apiService;
     }
 }
